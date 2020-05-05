@@ -1,0 +1,75 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>coWeather</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->	
+        <link rel="icon" type="{% static 'image/png' %}" href="{% static 'details_page/images/icons/icon_top.ico' %}"/>
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'details_page/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'details_page/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'details_page/vendor/animate/animate.css' %}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'details_page/vendor/select2/select2.min.css' %}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'details_page/vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'details_page/css/util.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'details_page/css/main.css' %}">
+    <!--===============================================================================================-->
+	<link href="{% static 'front_page/css/style.css' %}" rel="stylesheet">
+	<link href="{% static 'front_page/css/responsive.css' %}" rel="stylesheet">
+    </head>
+	<style>
+		body {
+			background-image: url('{% static "details_page/images/slider1.jpg" %}');
+		}
+	</style>
+
+  <header>
+    <!-- header-area start -->
+    <div id="sticker" class="header-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+
+            <!-- Navigation -->
+            <nav class="navbar navbar-default">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <!-- Brand -->
+                <a class="navbar-brand page-scroll sticky-logo" href="/">
+                  <h1><span>co</span>Weather</h1>
+                  <!-- Uncomment below if you prefer to use an image logo -->
+                  <!-- <img src="img/logo.png" alt="" title=""> -->
+								</a>
+			  </div>
+			  
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1" style="display: inline-block">
+                <ul class="nav navbar-nav navbar-right">
+                  <li>
+                    <a class="page-scroll" href="">ΟΥΠΣ κάτι πήγε στραβά</a>
+                  </li>
+                </ul>
+              </div>
+              <!-- navbar-collapse -->
+            </nav>
+           
+              
+            <!-- END: Navigation -->
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- header-area end -->
+  </header>
+  <body> 
+  <img src={% static "details_page/images/error.png" %} class="errorElement">
+  </body>

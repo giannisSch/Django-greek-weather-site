@@ -1,0 +1,257 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>coWeather</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->	
+        <link rel="icon" type="{% static 'image/png' %}" href="{% static 'details_page/images/icons/icon_top.ico' %}"/>
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'details_page/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'details_page/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'details_page/vendor/animate/animate.css' %}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'details_page/vendor/select2/select2.min.css' %}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'details_page/vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'details_page/css/util.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'details_page/css/main.css' %}">
+    <!--===============================================================================================-->
+	<link href="{% static 'front_page/css/style.css' %}" rel="stylesheet">
+	<link href="{% static 'front_page/css/responsive.css' %}" rel="stylesheet">
+    </head>
+	<style>
+		body {
+			background-image: url('{% static "details_page/images/slider1.jpg" %}');
+		}
+	</style>
+
+  <header>
+    <!-- header-area start -->
+    <div id="sticker" class="header-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+
+            <!-- Navigation -->
+            <nav class="navbar navbar-default">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <!-- Brand -->
+                <a class="navbar-brand page-scroll sticky-logo" href="/">
+                  <h1><span>co</span>Weather</h1>
+                  <!-- Uncomment below if you prefer to use an image logo -->
+                  <!-- <img src="img/logo.png" alt="" title=""> -->
+								</a>
+			  </div>
+			  
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1" style="display: inline-block">
+                <ul class="nav navbar-nav navbar-right">
+                  <li>
+                    <a class="page-scroll" href="">{{city_name}}</a>
+                  </li>
+                </ul>
+              </div>
+              <!-- navbar-collapse -->
+            </nav>
+               
+              
+            <!-- END: Navigation -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- header-area end -->
+  </header>
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<div class="limiter">
+		<br>
+		<h1 style="color:white;"> </h1>
+		<div class="container-table100">
+			<div class="wrap-table100">
+				<div class="table100 ver1 m-b-110">
+					<div class="table100-head">
+						<table >
+							<thead>
+								<tr class="row100 head">
+									<th class="cell100 column1">Ημερομηνία</th>
+									<th class="cell100 column2">Ώρα</th>
+									<th class="cell100 column3">meteo.gr</th>
+									<th class="cell100 column4">openweathermap.org</th>
+								</tr>
+							</thead>
+						</table>
+					</div>
+
+						<table  border="0">
+							<tbody>
+								<style>
+									.tempText { font-weight: bold; display:block; font-size: x-large; left: 0px; top: 30px;}
+									.subtext { font-size: smaller; }
+									.desciption {
+										font-size: smaller;
+									}
+									.blockContent {
+										position:relative;
+										top : -50px;
+									}
+									.blockPicture{
+										position:relative;
+										top : 0px;
+										left : 0px;
+										word-wrap: break-word;
+									}
+								</style>
+								
+								{% for data in weather%}
+									<tr class="row100 body">
+										{% language 'el' %}
+										<td class="cell100 column1"> {{data.date.date|date:'l d/m'}} </td>
+										<td class="cell100 column2">{{data.date.time|time:'H:i'}}</td>
+										{% endlanguage %}
+										<td class="cell100 column3">
+											<table>
+												<tbody>
+													<tr>
+														<td>
+															<span style="font-size: x-large;font-weight: bold;"> {{data.meteo.temperature}}&#8451; <br/> </span>
+														</td>
+														<td>
+															<figure class="image is-15x15">
+																<img src={{data.meteo.icon}} alt="Image"  width="70" height= "70">
+															</figure>
+															<span style="font-size: smaller;">{{data.meteo.description}}</span>
+														</td>
+													</tr>
+													<tr class="row100 body">
+															<td colspan="2">
+																<span style="font-size: smaller;float: left;">Αισθητή: {{data.meteo.temperature_face}}&#8451;</span>
+																<span style="font-size: smaller;float: right;"> Υγρασία: {{data.meteo.humidity}}&#37 <br/></span>
+																<span style="font-size: smaller;float: left;">Μπφ: {{data.meteo.beaufort}}  Κατ: {{data.meteo.direction}}  Ταχ: {{data.meteo.speed}} km/h</span>
+															</td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+										<td class="cell100 column4">
+											<table>
+												<tbody>
+													<tr>
+														<td>
+															<span style="font-size: x-large;font-weight: bold;"> {{data.open_weather.temperature}}&#8451; <br/> </span>
+														</td>
+														<td>
+															<figure class="image is-15x15">
+																<img src={{data.open_weather.icon}} alt="Image"  width="70" height= "70">
+															</figure>
+															<span style="font-size: smaller;">{{data.open_weather.description|upper}}</span>
+														</td>
+													</tr>
+													<tr>
+															<td colspan="2">
+																<span style="font-size: smaller;float: left;">Αισθητή: {{data.open_weather.temperature_face}}&#8451;</span>
+																<span style="font-size: smaller;float: right;"> Υγρασία: {{data.open_weather.humidity}}&#37 <br/></span>
+																<span style="font-size: smaller;float: left;">Ταχ: {{data.meteo.speed}} km/h</span>
+															</td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--
+	<div class="limiter"></div>
+		<div class="container-table100">
+			<div class="wrap-table100">
+		<div id="chartContainer" style="left: 20px; width:100%; height:320px"></div>  
+		<div id="addDataPoint"></div>
+			</div>
+
+		</div> 
+	</div> 
+	-->
+
+<!--===============================================================================================-->	
+<script src="{% static 'details_page/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'details_page/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'details_page/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'details_page/vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'details_page/vendor/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+	<script>
+		$('.js-pscroll').each(function(){
+			var ps = new PerfectScrollbar(this);
+
+			$(window).on('resize', function(){
+				ps.update();
+			})
+		});
+			
+		
+	</script>
+<!--===============================================================================================-->
+	<script src="{% static 'details_page/js/main.js' %}"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> 
+	<script type="text/javascript">
+	window.onload = function () {
+		var chart = new CanvasJS.Chart("chartContainer", {
+			backgroundColor: "#141414",
+			title: {
+				fontColor: "white",
+				text: "5ήμερη Πρόγνωση Καιρού"
+			},
+			axisX:{ 
+				lineColor: "white", 
+				labelFontColor: "white",
+				valueFormatString: "DD-M-H-mm"
+			},
+			axisY:{
+				lineColor: "white", 
+				labelFontColor: "white",
+			},  
+			data: [
+			{
+				type: "spline",
+				dataPoints: []
+			}
+			]
+		});
+
+		chart.render();	
+
+		$("#addDataPoint").ready(function () {
+		var length = chart.options.data[0].dataPoints.length;
+		{%for data in scart%}
+			chart.options.data[0].dataPoints.push({x: {{data.x}}, y: {{data.y}}});
+		{%endfor%}
+		chart.render();
+
+		}).click();
+	}
+	</script>
+
+
+</body>
+</html>
