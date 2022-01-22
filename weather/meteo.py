@@ -20,6 +20,10 @@ def get_temperature(td):
 		temp_humidity = td.find('div', class_='normal tempcolorcell').text
 	if (td.find('div', class_='normal maxtemp tempcolorcell')):
 		temp_humidity = td.find('div', class_='normal maxtemp tempcolorcell').text
+	if (td.find('div', class_='Pagetos tempcolorcell')):
+		temp_humidity = td.find('div', class_='Pagetos tempcolorcell').text
+	if (td.find('div', class_='Pagetos maxtemp tempcolorcell')):
+		temp_humidity = td.find('div', class_='Pagetos maxtemp tempcolorcell').text
 	split = temp_humidity.strip().split('\n')
 	if len(split) == 2:
 		temperature = split[0].split("°")[0]
